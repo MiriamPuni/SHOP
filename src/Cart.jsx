@@ -1,15 +1,18 @@
-import ItemCart from "./ItemCart"
-export default function Cart(props) {
-    return <div className="cart">
-        <h1>SHOPING CART</h1>
-        {props.listCart.map(e =>
-            <ItemCart
-                hanleCart = {props.hanleCart}
-                key={e.id}
-                price={e.price}
-                id={e.id}
-                namei={e.name}
-                amount={e.amount} />
-        )}
+import React from 'react'
+import CartList from './CartList'
+import Total from './Total'
+import DataContext from './context/DataContext'
+import { useContext } from 'react'
+export default function Cart() {
+  const {cart, setCart} = useContext(DataContext)
+  const calcTotal = () => {
+    let total = 0
+    Object.values(cart).map(e=>total += (e.qty * e.price))
+    return total
+  }
+  return <div className='cart'>
+    <CartList/>
+    <Total calcTotal = {calcTotal}/>
+    <div className='con_deleteAll'><div className='deleteAll' onClick={()=>setCart({})}>DELETE ALL</div></div>
     </div>
 }

@@ -1,7 +1,13 @@
-export default function ItemCart(props) {
-    return <div className="itemCart" onClick={()=> props.hanleCart(props.namei)}>
-        <p>NAME: {props.namei}</p>
-        <p>AMOUNT: {props.amount}</p>
-        <p>PRICE: {props.amount * props.price}</p>
+import React from 'react'
+import PlusMinus from './PlusMinus'
+export default function ItemCart({item}) {
+    let { name, price, qty, emoji, id } = item
+    return <div className='itemCart'>
+        <div>
+            <p>{name} {emoji}</p>
+            <p>{price}</p>
+            <p>{qty}</p>
+        </div>
+        <PlusMinus classi = {'container_button_in_cart'} id = {id}/>
     </div>
 }

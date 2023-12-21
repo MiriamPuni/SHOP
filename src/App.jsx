@@ -1,9 +1,9 @@
+import React from 'react'
 import './App.css'
-import Content from './Content'
-function App() {
+import Layout from './Layout'
+export default function App() {
   return <div>
-    <Content />
+    <Layout/>
   </div>
-}
 
-export default App
+}
