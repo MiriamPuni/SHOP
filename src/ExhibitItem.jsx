@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
+import PlusMinus from "./PlusMinus";
+import { useParams } from "react-router-dom";
 export default function ExhibitItem() {
-  // let { name, emoji, price, id } = item
   const [item, setItem] = useState()
-  let id = location.pathname.replace('/item/', '')
-  console.log(id);
+  const {itemID} = useParams()
   useEffect(() => {
-    fetch('https://jbh-mockserver.onrender.com/items/'+ id)
+    fetch('https://jbh-mockserver.onrender.com/items/'+ itemID)
     .then(r => r.json())
-    .then(re => {
-      setItem(re) 
-    })
+    .then(re => setItem(re) )
   }, [])
-
-  return <div>
+  
+  return <div className="exhibitItem">
     {(item)
     ?
     <>
-    {console.log(item)}
     <h1>{item.name}</h1>
     <h1>{item.emoji}</h1>
     <h1>{item.price} $</h1>
+    <PlusMinus classi={'container_button_add_or_minus'} item={item} id={itemID}/>
     </>
     :
     null

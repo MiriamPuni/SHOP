@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import ItemList from './ItemList'
+import { Link, useNavigate } from 'react-router-dom'
 export default function Categories({setUrl}) {
-
+  let nav = useNavigate()
   const [categories, setcategories] = useState([])
   const [imags, setImags] = useState([])
 
@@ -14,9 +15,7 @@ export default function Categories({setUrl}) {
 
 
   return <div className='Categories'>
-    {/* {categories.map((e,i) => <div className='category' key={e} onClick={()=>location.href = `http://localhost:5173/categories/${e}`}> {e}<img src={imags[i]} alt="" /></div>)} */}
-    {/* {categories.map((e,i) => <a href={'/categories/' + e}><div className='category' key={e} onClick={setUrl(`/categories/${e}`)}> {e}<img src={imags[i]} alt="" /></div></a>)} */}
-    {categories.map((e,i) => <a href={'/categories/' + e}><div className='category' key={e} onClick={()=> <ItemList/>}> {e}<img src={imags[i]} alt="" /></div></a>)}
-    
+    {/* {categories.map((e,i) => <Link to={'/categories/' + /e}><div className='category' key={e} onClick={()=> <ItemList/>}> {e}<img src={imags[i]} alt="" /></div></Link>)} */}
+    {categories.map((e,i) => <div onClick={()=>nav('/categories/' + e)} className='category' key={e}> {e}<img src={imags[i]} alt="" /></div>)}
   </div>
 }

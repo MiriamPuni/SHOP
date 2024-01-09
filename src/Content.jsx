@@ -1,32 +1,18 @@
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import ExhibitItem from './ExhibitItem'
 import ItemList from './ItemList'
 import Categories from './categories'
-import { useState, useEffect } from 'react'
+import NotFound from './NotFound'
 export default function () {
+  let nav = useNavigate()
   return <div className='content'>
-  <a href='http://localhost:5173/'><button className='category_button'><i className="fa-solid fa-house"></i></button></a>
-  {(location.pathname == '/')
-  ?
-  <Categories/>
-  :
-  (location.pathname.includes('categories')
-  ?
-  <ItemList/>
-  :
-  <ExhibitItem/>
-  )
-}
+  <button onClick={()=>nav('/categories')} className='category_button'><i className="fa-solid fa-house"></i></button>
+  <Routes>
+    <Route path='/categories' element = {<Categories/>}/>
+    <Route path='/' element = {<Categories/>}/>
+    <Route path='/categories/:categoryName' element = {<ItemList/>}/>
+    <Route path='/item/:itemID' element = {<ExhibitItem/>}/>
+    <Route path='*' element = {<NotFound/>}/>
+</Routes>
   </div>
 }
-
-
-
-// const [url , setUrl] = useState()
-
-// location.href = '/categories'
-
-// useEffect(()=>{(url != location.pathname)? location.href = url: null},[url])
-
-{/* {(url == '/categories') ? <Categories setUrl = {setUrl}/> : null} */}
-{/* {(url=='/categories')? location.href = url : console.log('dxcvu')} */}
-{/* {url!=='/categories' && url.includes('/categories') && <ItemList/>} */}

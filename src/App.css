@@ -96,6 +96,10 @@ a{
     border: 1px solid black;
     margin: 10px;
 }
+.pirtei_muzar{
+    width: 120px;
+    height: 80px;
+}
 .container_button_add{
     width: 119px;
     background-color: #5f9ea0;
@@ -206,4 +210,35 @@ img{
     justify-content: center;
     align-items: center;
     font-size: 30px;
+}
+.erorr404{
+    width: 800px;
+    height: 400px;
+}
+.exhibitItem{
+    /* font-size: 30px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.exhibitItem > .container_button_add_or_minus{
+    font-size: 10px;
+    background-color: aqua;
+}
+.user{
+    background-color:rgb(116, 194, 197);
+    position: fixed;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    right: 10px;
+    top: 10px;
+}
+.avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    border: 1px solid black;
 }

@@ -3,7 +3,9 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import DataContext from './context/DataContext'
 export default function PlusMinus({classi,item, id}) {
-    const {cart, setCart} = useContext(DataContext)
+
+    const {cart, setCart, order, setOrder} = useContext(DataContext)
+
     const handlePlus = () => {
         let newCart = { ...cart }
         if (newCart[id]) {
@@ -12,6 +14,8 @@ export default function PlusMinus({classi,item, id}) {
         else {
             newCart[id] = { ...item, qty: 1 }
             newCart[id]['qty'] = 1
+            setOrder(old => old +1)
+            newCart[id].order = order
         }
         setCart(newCart)
     }
